@@ -133,6 +133,7 @@ public class Greedy {
         for(int i=0;i<n;i++){
             y[i]=s.nextInt();
         }
+        minimumCostOfBreaking(x,y);
     }
     public static void main(String args[]) {
         jobmain();
