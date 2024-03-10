@@ -96,7 +96,44 @@ public class Greedy {
         }
         JobScheduling(arr, n);
     }
-
+    public static void minimumCostOfBreaking(int[] x, int[] y) {
+        Arrays.sort(x);
+        Arrays.sort(y);
+        int xp = x.length - 1, yp = y.length - 1, hc = 1, vc = 1, ans = 0;
+        while (xp > -1 && yp > -1) {
+            if (y[yp] > x[xp]) {
+                ans += (hc * y[yp]);
+                vc++;
+                yp--;
+            } else {
+                ans += (vc * x[xp]);
+                hc++;
+                xp--;
+            }
+        }
+        while (yp > -1) {
+            ans += (y[yp] * hc);
+            vc++;
+            yp--;
+        }
+        while (xp > -1) {
+            ans += (x[xp] * vc);
+            xp--;
+        }
+        System.out.println(ans);
+    }
+    static void minimumCostToCutmain(){
+        Scanner s=new Scanner(System.in);
+        int m=s.nextInt(),n=s.nextInt();
+        int[] x=new int[m];
+        int[] y=new int[n];
+        for(int i=0;i<m;i++){
+            x[i]=s.nextInt();
+        }
+        for(int i=0;i<n;i++){
+            y[i]=s.nextInt();
+        }
+    }
     public static void main(String args[]) {
         jobmain();
     }
