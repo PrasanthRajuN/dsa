@@ -77,7 +77,20 @@ public class Recursion {
         occurence_rec(i + 1, s, target, st, ed);
     }
 
+    static void move(int i, String s, char t, String neww, String count) {
+        if (i == s.length()) {
+            print(neww + count);
+            return;
+        }
+        if (s.charAt(i) == t) {
+            count += s.charAt(i);
+        } else {
+            neww += s.charAt(i);
+        }
+        move(i + 1, s, t, neww, count);
+    }
+
     public static void main(String args[]) {
-        occurence_rec(0, "shyam sundar", 's', -1, -1);
+        move(0, "shxxxaym sxunxdar", 'x', "", "");
     }
 }
