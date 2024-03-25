@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Recursion {
     static void print(String a) {
         System.out.print(a);
@@ -77,20 +79,48 @@ public class Recursion {
         occurence_rec(i + 1, s, target, st, ed);
     }
 
-    static void move(int i, String s, char t, String neww, String count) {
-        if (i == s.length()) {
-            print(neww + count);
+    static void abcd_for(String s) {
+
+    }
+
+    static void permutation(String s, String per) {
+        if (s.length() == 0) {
+            println(per);
             return;
         }
-        if (s.charAt(i) == t) {
-            count += s.charAt(i);
-        } else {
-            neww += s.charAt(i);
+        for (int i = 0; i < s.length(); i++) {
+            permutation(s.substring(0, i) + s.substring(i + 1), s.charAt(i) + per);
         }
-        move(i + 1, s, t, neww, count);
+    }
+
+    static void for1(int n, int ref) {
+        if (n == -1)
+            return;
+        print(n + " ");
+        for1(n - 1, ref - 1);
+        for1(n - 1, ref - 1);
+    }
+
+    static void array_permutations(int[] a, int i, int target, ArrayList<Integer> arr) {
+
+        if (i == a.length) {
+            if (target == 0)
+                System.out.println(arr);
+            return;
+
+        }
+        if (a[i] <= target) {
+            arr.add(a[i]);
+            array_permutations(a, i, target - a[i], arr);
+            arr.remove(arr.size() - 1);
+        }
+        array_permutations(a, i + 1, target, arr);
     }
 
     public static void main(String args[]) {
-        move(0, "shxxxaym sxunxdar", 'x', "", "");
+        // permutation("abc", "");
+        int[] a = { 7, 2, 6, 5 };
+        array_permutations(a, 0, 16, new ArrayList<>());
     }
+
 }
