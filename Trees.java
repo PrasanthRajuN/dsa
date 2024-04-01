@@ -63,6 +63,16 @@ public class Trees
         postOrderTraversal(root.right);
         System.out.println(root.data);
     }
+	
+    static int No_of_nodes(Node root){
+        if(root==null)return 0;
+        return No_of_nodes(root.left)+No_of_nodes(root.right)+1;
+    }
+    static int Sum_of_nodes(Node root){
+        if(root==null)return 0;
+        return Sum_of_nodes(root.left)+Sum_of_nodes(root.right)+root.data;
+    }
+
     static Node root;
 	public static void main(String[] args) {
         root=new Node(10);
