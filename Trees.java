@@ -11,7 +11,7 @@ public class Trees
             right=null;
         }
     }
-    static void leveloftree(){
+    static void printingTree(){
         Queue<Node> q=new LinkedList<>();
         q.add(root);
         while(!q.isEmpty()){
