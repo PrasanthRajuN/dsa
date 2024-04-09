@@ -72,6 +72,62 @@ public class Trees
         if(root==null)return 0;
         return Sum_of_nodes(root.left)+Sum_of_nodes(root.right)+root.data;
     }
+	static boolean search(Node root, int key) {
+        if (root == null) {
+            return false;
+        }
+        if (root.data == key) {
+            return true;
+        }
+        return (search(root.left, key) || search(root.right, key));
+    }
+
+    static void main_tree(Node root, Node subroot) {
+        if (root == null || subroot == null)
+            return;
+        if (root.data == subroot.data) {
+            print(check(root, subroot) + "");
+            return;
+        }
+        main_tree(root.left, subroot);
+        main_tree(root.right, subroot);
+    }
+
+    static boolean check(Node root, Node subroot) {
+        if (root == null && subroot == null)
+            return true;
+        if (root == null || subroot == null)
+            return true;
+        if (root.data != subroot.data)
+            return false;
+        if (check(root.left, subroot.left))
+            return true;
+        if (check(root.right, subroot.right))
+            return true;
+        return true;
+    }
+
+    static void levelordertraversal(Node root) {
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while (!q.isEmpty()) {
+            Node temp = q.remove();
+            if (temp == null) {
+                if (q.isEmpty())
+                    break;
+                System.out.println();
+                q.add(null);
+
+            } else {
+                print(temp.data + " ");
+                if (temp.left != null)
+                    q.add(temp.left);
+                if (temp.right != null)
+                    q.add(temp.right);
+            }
+        }
+    }
 
     static Node root;
 	public static void main(String[] args) {
